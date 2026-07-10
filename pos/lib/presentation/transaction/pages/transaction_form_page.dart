@@ -346,11 +346,11 @@ class _TransactionFormPageState extends State<TransactionFormPage> {
               padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Avatar circle with first letter
                   Container(
-                    width: 44,
-                    height: 44,
+                    width: 28,
+                    height: 28,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -365,46 +365,44 @@ class _TransactionFormPageState extends State<TransactionFormPage> {
                       p.name.isNotEmpty ? p.name[0].toUpperCase() : '?',
                       style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
+                        fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8),
-                  // Product name
+                  const SizedBox(height: 4),
                   Text(
                     p.name,
                     textAlign: TextAlign.center,
-                    maxLines: 2,
+                    maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: theme.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.w500,
                       height: 1.2,
+                      fontSize: 10,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  // Price
+                  const SizedBox(height: 2),
                   Text(
                     _currency.format(p.price),
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 10,
                       fontWeight: FontWeight.bold,
                       color: theme.colorScheme.primary,
                     ),
                   ),
-                  // Stock badge
                   if (!inStock)
                     Container(
-                      margin: const EdgeInsets.only(top: 4),
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                      margin: const EdgeInsets.only(top: 2),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
                       decoration: BoxDecoration(
                         color: theme.colorScheme.error.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         'Out of stock',
                         style: TextStyle(
-                          fontSize: 9,
+                          fontSize: 8,
                           color: theme.colorScheme.error,
                           fontWeight: FontWeight.w600,
                         ),
@@ -412,11 +410,11 @@ class _TransactionFormPageState extends State<TransactionFormPage> {
                     )
                   else if (p.stock < 10)
                     Container(
-                      margin: const EdgeInsets.only(top: 4),
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 1),
+                      margin: const EdgeInsets.only(top: 2),
+                      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
                       decoration: BoxDecoration(
                         color: Colors.orange.withValues(alpha: 0.15),
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(6),
                       ),
                       child: Text(
                         'Stock: ${p.stock}',
